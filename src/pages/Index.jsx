@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, Heading, Input, Text, Textarea, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input, Select, Text, Textarea, VStack } from "@chakra-ui/react";
 import { FaPlus, FaTrash } from "react-icons/fa";
 
 const Index = () => {
@@ -39,7 +39,10 @@ const Index = () => {
                 Delete
               </Button>
             </Flex>
-            <Input placeholder="Enter stage type (text or file)" value={stage.type} onChange={(e) => updateStage(index, e.target.value, stage.content)} mb={2} />
+            <Select value={stage.type} onChange={(e) => updateStage(index, e.target.value, stage.content)} mb={2}>
+              <option value="text">Text</option>
+              <option value="file">File</option>
+            </Select>
             {stage.type === "text" ? (
               <Textarea placeholder="Enter text content" value={stage.content} onChange={(e) => updateStage(index, stage.type, e.target.value)} />
             ) : (
